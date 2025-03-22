@@ -6,6 +6,8 @@ Core 会构建为静态库，是该项目的通用代码库。App 会构建为可执行文件，它会链接 Core
 
 `Scripts/`目录包含 `Windows` 的构建脚本，`Vendor/`目录包含 Premake 二进制文件（当前版本为`5.0-beta2`）。
 
+注：该项目模板来修改自 [TheCherno](https://github.com/TheCherno/ProjectTemplate)。
+
 ## 构建指南
 1. 克隆该存储库的 `easyx` 分支 `git clone -b easyx --single-branch https://github.com/LuckyGhostStudio/CppProjectTemplate.git` 或使用 GitHub 上的 "Use this template" 按钮根据此模板快速设置自己的存储库。
 2. 打开 `Scripts/` 目录，运行 `Setup-Windows.bat` 脚本来生成项目文件。也可以通过更改脚本来更改生成的项目类型，当前项目设置为 Visual Studio 2022。
