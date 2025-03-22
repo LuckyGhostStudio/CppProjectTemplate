@@ -1,45 +1,55 @@
 project "App"
-   kind "ConsoleApp"
-   language "C++"
-   cppdialect "C++20"
-   targetdir "Binaries/%{cfg.buildcfg}"
-   staticruntime "off"
+    kind "ConsoleApp"
+    language "C++"
+    cppdialect "C++20"
+    targetdir "Binaries/%{cfg.buildcfg}"
+    staticruntime "off"
 
-   files { "Source/**.h", "Source/**.cpp" }
+    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
+    objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")
 
-   includedirs
-   {
-      "Source",
+    files
+    {
+        "Source/**.h",
+        "Source/**.cpp"
+    }
 
-	  -- Include Core
-	  "../Core/Source"
-   }
+    includedirs
+    {
+        "Source",
 
-   links
-   {
-      "Core"
-   }
+        -- Include Core
+        "../Core/Source"
+    }
 
-   targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
-   objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")
+    libdirs
+    {
+        "../Core/Vendor/EasyX/lib/x64"
+    }
 
-   filter "system:windows"
-       systemversion "latest"
-       defines { "WINDOWS" }
+    links
+    {
+        "Core",
+        "EasyXw.lib",
+    }
 
-   filter "configurations:Debug"
-       defines { "DEBUG" }
-       runtime "Debug"
-       symbols "On"
+    filter "system:windows"
+         systemversion "latest"
+         defines { "WINDOWS" }
 
-   filter "configurations:Release"
-       defines { "RELEASE" }
-       runtime "Release"
-       optimize "On"
-       symbols "On"
+    filter "configurations:Debug"
+         defines { "DEBUG" }
+         runtime "Debug"
+         symbols "On"
 
-   filter "configurations:Dist"
-       defines { "DIST" }
-       runtime "Release"
-       optimize "On"
-       symbols "Off"
+    filter "configurations:Release"
+         defines { "RELEASE" }
+         runtime "Release"
+         optimize "On"
+         symbols "On"
+
+    filter "configurations:Dist"
+         defines { "DIST" }
+         runtime "Release"
+         optimize "On"
+         symbols "Off"

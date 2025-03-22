@@ -1,24 +1,21 @@
-# C++ Project Starter Template
+# C++ & EasyX 项目模板
 
-This is a little quick-start project template for C++ projects which utilise a Core/App project architecture. There are two included projects - one called _Core_, and one called _App_. [Premake](https://github.com/premake/premake-core) is used to generate project files.
+一个用于快速构建 C++ 和 EasyX 项目的简单模板，其中包含两个项目：Core 和 App。[Premake](https://github.com/premake/premake-core)用于生成项目文件。
 
-Core builds into a static library and is meant to contain common code intended for use in multiple applications. App builds into an executable and links the Core static library, as well as provides an include path to Core's code.
+Core 会构建为静态库，是该项目的通用代码库。App 会构建为可执行文件，它会链接 Core 静态库。
 
-The `Scripts/` directory contains build scripts for Windows and Linux, and the `Vendor/` directory contains Premake binaries (currently version `5.0-beta2`).
+`Scripts/`目录包含 `Windows` 的构建脚本，`Vendor/`目录包含 Premake 二进制文件（当前版本为`5.0-beta2`）。
 
-## Getting Started
-1. Clone this repository or use the "Use this template" button on GitHub to quickly set up your own repository based on this template
-2. `App/` and `Core/` are the two projects - you can edit the names of these folders and their contents to suit
-3. The three included Premake build files are `Build.lua`, `Core/Build-Core.lua` and `App/Build-App.lua` - you can edit these to customise your build configurations, edit the names of your projects and workspace/solution, etc.
-4. Open the `Scripts/` directory and run the appropriate `Setup` script to generate projects files. You can edit the setup scripts to change the type of project that is generated - out of the box they are set to Visual Studio 2022 for Windows and gmake2 for Linux.
+## 构建指南
+1. 克隆该存储库的 `easyx` 分支 `git clone -b easyx --single-branch https://github.com/LuckyGhostStudio/CppProjectTemplate.git` 或使用 GitHub 上的 "Use this template" 按钮根据此模板快速设置自己的存储库。
+2. 打开 `Scripts/` 目录，运行 `Setup-Windows.bat` 脚本来生成项目文件。也可以该脚本来更改生成的项目类型，当前项目设置为 Visual Studio 2022。
+3. 三个 Premake 构建文件是 `Build.lua`、`Core/Build-Core.lua` 和 `App/Build-App.lua`。可以编辑这些文件来定制构建配置，编辑项目名称和工作区/解决方案等。
 
-Note that no macOS setup script is currently provided; you can duplicate the Linux script and adjust accordingly.
+## 模板内容
+- `Core/Source` 中提供了一个 EasyX Demo 代码示例，在 `App/Source` 中调用进行测试。
+- `.gitignore` 用于忽略项目文件和二进制文件。
+- Windows 平台的 Premake 二进制文件 (`v5.0-beta2`)
 
-## Included
-- Some example code (in `App/Source` and `Core/Source`) to provide a starting point and test
-- Simple `.gitignore` to ignore project files and binaries
-- Premake binaries for Win/Mac/Linux (`v5.0-beta2`)
-
-## License
-- UNLICENSE for this repository (see `UNLICENSE.txt` for more details)
-- Premake is licensed under BSD 3-Clause (see included LICENSE.txt file for more details)
+## 许可证
+- 此存储库的 UNLICENSE (`UNLICENSE.txt` 文件)
+- Premake 根据 BSD 3-Clause 获得许可 (`LICENSE.txt` 文件)
