@@ -19,7 +19,8 @@ project "App"
         "Source",
 
         -- Include Core
-        "../Core/Source"
+        "../Core/Source",
+        "../Vendor/EasyX/include"
     }
 
     libdirs
