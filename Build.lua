@@ -1,17 +1,15 @@
 -- premake5.lua
-workspace "New Project"
+workspace "LFrame"
    architecture "x64"
    configurations { "Debug", "Release", "Dist" }
-   startproject "App"
+   startproject "LFrameApp"
 
-   -- Workspace-wide build options for MSVC
-   filter "system:windows"
-      buildoptions { "/EHsc", "/Zc:preprocessor", "/Zc:__cplusplus" }
+   flags { "MultiProcessorCompile" }
 
-OutputDir = "%{cfg.system}-%{cfg.architecture}/%{cfg.buildcfg}"
+outputdir = "%{cfg.system}-%{cfg.architecture}/%{cfg.buildcfg}"
 
 group "Core"
-	include "Core/Build-Core.lua"
+    include "LFrame/Build-LFrame.lua"
 group ""
 
-include "App/Build-App.lua"
+include "LFrameApp/Build-LFrameApp.lua"

@@ -1,12 +1,15 @@
-project "Core"
+project "LFrame"
     kind "StaticLib"
     language "C++"
     cppdialect "C++20"
     targetdir "Binaries/%{cfg.buildcfg}"
     staticruntime "off"
 
-    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
-    objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")
+    targetdir ("%{wks.location}/Binaries/" .. outputdir .. "/%{prj.name}")
+    objdir ("%{wks.location}/Binaries/Intermediates/" .. outputdir .. "/%{prj.name}")
+
+    -- pchheader "lpch.h"  -- Ô¤±àÒëÍ·ÎÄ¼þ
+    -- pchsource "Source/lpch.cpp"
 
     files
     {
@@ -17,6 +20,7 @@ project "Core"
     includedirs
     {
         "Source",
+        "Vendor",
         "Vendor/EasyX/include"
     }
 

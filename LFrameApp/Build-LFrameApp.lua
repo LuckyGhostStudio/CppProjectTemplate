@@ -1,12 +1,12 @@
-project "App"
+project "LFrameApp"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++20"
     targetdir "Binaries/%{cfg.buildcfg}"
     staticruntime "off"
 
-    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
-    objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")
+    targetdir ("%{wks.location}/Binaries/" .. outputdir .. "/%{prj.name}")
+    objdir ("%{wks.location}/Binaries/Intermediates/" .. outputdir .. "/%{prj.name}")
 
     files
     {
@@ -19,18 +19,19 @@ project "App"
         "Source",
 
         -- Include Core
-        "../Core/Source",
-        "../Vendor/EasyX/include"
+        "%{wks.location}/LFrame/Source",
+        "%{wks.location}/LFrame/Vendor",
+        "%{wks.location}/LFrame/Vendor/EasyX/include",
     }
 
     libdirs
     {
-        "../Core/Vendor/EasyX/lib/x64"
+        "%{wks.location}/LFrame/Vendor/EasyX/lib/x64"
     }
 
     links
     {
-        "Core",
+        "LFrame",
         "EasyXw.lib",
     }
 
