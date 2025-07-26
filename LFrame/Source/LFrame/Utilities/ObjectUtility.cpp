@@ -1,21 +1,21 @@
-#include "NodeUtility.h"
+#include "ObjectUtility.h"
 
 #include <sstream>
 
 namespace LFrame
 {
-    std::string NodeUtility::NodeToString(Node* node, bool showDetails)
+    std::string ObjectUtility::ObjectToString(Object* object, bool showDetails)
     {
         std::stringstream ss;
 
-        if (!node)
+        if (!object)
         {
             return "";
         }
 
-        node->DFS([&](Node* node)
+        object->DFS([&](Object* object)
         {
-            uint32_t level = node->GetLevel();
+            uint32_t level = object->GetLevel();
 
             // 根据层级缩进
             for (uint32_t i = 0; i < level; i++)
@@ -23,7 +23,7 @@ namespace LFrame
                 ss << "  ";
             }
 
-            ss << node->m_Name << "\n";
+            ss << object->m_Name << "\n";
 
             if (showDetails)
             {

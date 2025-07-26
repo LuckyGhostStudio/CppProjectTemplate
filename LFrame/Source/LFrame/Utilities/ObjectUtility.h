@@ -2,19 +2,19 @@
 
 #include <string>
 
-#include "LFrame/Core/Node.h"
+#include "LFrame/Core/Object.h"
 
 namespace LFrame
 {
-    class NodeUtility
+    class ObjectUtility
     {
     public:
         /// <summary>
-        /// 节点转为字符串
+        /// 对象转为字符串
         /// </summary>
-        /// <param name="node">节点</param>
+        /// <param name="object">节点</param>
         /// <param name="showDetails">是否显示详细信息</param>
         /// <returns></returns>
-        static std::string NodeToString(Node* node, bool showDetails = false);
+        static std::string ObjectToString(Object* object, bool showDetails = false);
     };
 }

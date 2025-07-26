@@ -2,7 +2,7 @@
 
 namespace LFrame
 {
-    class Node;
+    class GameObject;
 
     /// <summary>
     /// 组件基类
@@ -14,6 +14,6 @@ namespace LFrame
         virtual void Update() = 0;
         virtual void OnGUI() = 0;
     private:
-       // Node* m_Owner;               // 所属节点
+        GameObject* m_GameObject;   // 所属节点
     };
 }

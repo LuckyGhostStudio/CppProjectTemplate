@@ -1,20 +1,20 @@
-#include "Node.h"
+#include "Object.h"
 
 #include <iostream>
 #include <sstream>
 
 namespace LFrame
 {
-    Node::Node(const std::string& name)
+    Object::Object(const std::string& name)
         : m_Name(name)
     {
 
     }
 
-    Node::~Node()
+    Object::~Object()
     {
         // 清理子节点
-        for (Node* child : m_Children)
+        for (Object* child : m_Children)
         {
             if (child)
             {
@@ -24,11 +24,11 @@ namespace LFrame
         }
     }
 
-    bool Node::AddChild(Node* child)
+    bool Object::AddChild(Object* child)
     {
         if (!child)
         {
-            std::cerr << "Invalid child node." << std::endl;
+            std::cerr << "Invalid child object." << std::endl;
             return false;
         }
 
@@ -46,11 +46,11 @@ namespace LFrame
         return true;
     }
 
-    bool Node::RemoveChild(Node* child)
+    bool Object::RemoveChild(Object* child)
     {
         if (!child)
         {
-            std::cerr << "Invalid child node." << std::endl;
+            std::cerr << "Invalid child object." << std::endl;
             return false;
         }
 
@@ -58,7 +58,7 @@ namespace LFrame
         auto it = std::find(m_Children.begin(), m_Children.end(), child);
         if (it == m_Children.end())
         {
-            std::cerr << "Child node not found." << std::endl;
+            std::cerr << "Child object not found." << std::endl;
             return false;
         }
        
@@ -69,7 +69,7 @@ namespace LFrame
         return true;
     }
 
-    void Node::Delete()
+    void Object::Delete()
     {
         if (m_Parent)
         {
@@ -77,14 +77,9 @@ namespace LFrame
         }
     }
 
-    std::string Node::ToString() const
+    Object* Object::GetChild(uint32_t index) const
     {
-       
-    }
-
-    Node* Node::GetChild(int index) const
-    {
-        if (index < 0 || index >= m_Children.size())
+        if (index < 0 || index >= static_cast<uint32_t>(m_Children.size()))
         {
             std::cerr << "Index out of bounds." << std::endl;
             return nullptr;

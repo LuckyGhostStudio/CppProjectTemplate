@@ -3,34 +3,33 @@
 #include <iostream>
 
 using namespace LFrame;
-using namespace LFrame::UI;
 
 int main()
 {
     // 创建节点树
-    UINode* canvas = new UINode("Canvas");
+    GameObject* canvas = new GameObject("Canvas");
 
-    UINode* panel = new UINode("MainPanel");
+    GameObject* panel = new GameObject("MainPanel");
     canvas->AddChild(panel);
 
-    UINode* panel2 = new UINode("MainPanel2");
+    GameObject* panel2 = new GameObject("MainPanel2");
     canvas->AddChild(panel2);
 
-    UINode* title = new UINode("TitleText");
+    GameObject* title = new GameObject("TitleText");
     panel->AddChild(title);
 
-    UINode* buttonContainer = new UINode("ButtonContainer");
+    GameObject* buttonContainer = new GameObject("ButtonContainer");
     panel->AddChild(buttonContainer);
 
-    UINode* playButton = new UINode("PlayButton");
+    GameObject* playButton = new GameObject("PlayButton");
     buttonContainer->AddChild(playButton);
 
-    UINode* quitButton = new UINode("QuitButton");
+    GameObject* quitButton = new GameObject("QuitButton");
     buttonContainer->AddChild(quitButton);
     quitButton->SetActive(false); // 设置为非激活状态
 
     // 打印树形结构
-    std::cout << NodeUtility::NodeToString(canvas);
+    std::cout << ObjectUtility::ObjectToString(canvas);
 
     delete canvas;
     return 0;

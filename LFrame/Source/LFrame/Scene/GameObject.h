@@ -1,0 +1,15 @@
+#pragma once
+
+#include "LFrame/Core/Object.h"
+
+namespace LFrame
+{
+    /// <summary>
+    /// ”Œœ∑∂‘œÛ
+    /// </summary>
+    class GameObject : public Object
+    {
+    public:
+        explicit GameObject(const std::string& name);
+    };
+}
