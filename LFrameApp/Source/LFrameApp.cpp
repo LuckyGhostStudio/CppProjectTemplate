@@ -29,7 +29,7 @@ int main()
     quitButton->SetActive(false); // 设置为非激活状态
 
     // 打印树形结构
-    std::cout << ObjectUtility::ObjectToString(canvas);
+    std::cout << GameObjectUtility::GameObjectToString(canvas);
 
     delete canvas;
     return 0;

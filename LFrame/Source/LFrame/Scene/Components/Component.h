@@ -1,19 +1,26 @@
 #pragma once
 
+#include "LFrame/Core/Object.h"
+
 namespace LFrame
 {
     class GameObject;
 
-    /// <summary>
-    /// 组件基类
-    /// </summary>
-    class Component
+    class Component : public Object
     {
     public:
-        virtual void Start() = 0;
-        virtual void Update() = 0;
-        virtual void OnGUI() = 0;
-    private:
-        GameObject* m_GameObject;   // 所属节点
+        Component() : Object("Component") {}
+        virtual ~Component() = default;
+
+        GameObject* GetGameObject() const { return m_GameObject; }
+
+        virtual void OnStart() {}
+        virtual void OnUpdate(float deltaTime) {}
+        virtual void OnRender() {}
+        virtual void OnDestroy() {}
+    protected:
+        GameObject* m_GameObject = nullptr; // 所属的GameObject
+
+        friend class GameObject;
     };
 }

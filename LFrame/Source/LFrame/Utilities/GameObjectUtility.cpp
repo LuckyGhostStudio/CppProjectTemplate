@@ -1,21 +1,21 @@
-#include "ObjectUtility.h"
+#include "GameObjectUtility.h"
 
 #include <sstream>
 
 namespace LFrame
 {
-    std::string ObjectUtility::ObjectToString(Object* object, bool showDetails)
+    std::string GameObjectUtility::GameObjectToString(GameObject* gameObject, bool showDetails)
     {
         std::stringstream ss;
 
-        if (!object)
+        if (!gameObject)
         {
             return "";
         }
 
-        object->DFS([&](Object* object)
+        gameObject->DFS([&](GameObject* gameObject)
         {
-            uint32_t level = object->GetLevel();
+            uint32_t level = gameObject->GetLevel();
 
             // 根据层级缩进
             for (uint32_t i = 0; i < level; i++)
@@ -23,7 +23,7 @@ namespace LFrame
                 ss << "  ";
             }
 
-            ss << object->m_Name << "\n";
+            ss << gameObject->GetName() << "\n";
 
             if (showDetails)
             {

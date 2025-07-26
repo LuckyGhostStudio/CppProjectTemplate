@@ -40,18 +40,18 @@ project "LFrameApp"
          defines { "WINDOWS" }
 
     filter "configurations:Debug"
-         defines { "DEBUG" }
+         defines { "LF_DEBUG" }
          runtime "Debug"
          symbols "On"
 
     filter "configurations:Release"
-         defines { "RELEASE" }
+         defines { "LF_RELEASE" }
          runtime "Release"
          optimize "On"
          symbols "On"
 
     filter "configurations:Dist"
-         defines { "DIST" }
+         defines { "LF_DIST" }
          runtime "Release"
          optimize "On"
          symbols "Off"
